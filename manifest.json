@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "LMS Teacher Redirect",
+  "version": "1.0",
+  "description": "Auto redirect from course view to teacher profile",
+  "permissions": ["tabs", "scripting"],
+  "host_permissions": ["https://lms.hcmut.edu.vn/*"],
+  "action": {
+    "default_title": "Go to Teacher Profile",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://lms.hcmut.edu.vn/course/info.php?id=*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
